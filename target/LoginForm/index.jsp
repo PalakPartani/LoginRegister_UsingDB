@@ -1,8 +1,10 @@
-<%
+<%--<%
     String name=(String)session.getAttribute("username");
     String email=(String)session.getAttribute("email");
     String address=(String)session.getAttribute("address");
-    //out.print("Hello User: You have entered the name: "+name);
+%>--%>
+<%
+    Object customers = session.getAttribute("customers");
 %>
 <html>
 <head>
@@ -16,6 +18,10 @@
             background-color: white;
         }
     </style>
+    <script>
+        if(status == 1)
+            alert("Login successfull");
+    </script>
 </head>
 <body>
 <div class="card">
@@ -23,20 +29,21 @@
     <img src="https://www.pngmart.com/files/10/Business-User-Account-PNG-Photos.png" width="100%">
 </div>
     <div style="padding:10px 5px">
-        <h2>User Name : <% out.print(name); %></h2>
+                <%=customers%>
+    <%--    <h2>User Name : <% out.print(name); %></h2>
     </div>
     <div style="padding:5px">
         <h5>Email : <% out.print(email); %></h5>
     </div>
     <div style="padding:5px">
         <h5>Address : <% out.print(address); %></h5>
-    </div>
+    </div>--%>
     <div style="padding:20px;text-align: center">
-        <a style="padding:10px;text-decoration: none;color:black;color:white;background-color: blueviolet;border-radius: 10px;" href="login.jsp">Logout</a>
+        <a style="padding:10px;text-decoration: none;color:white;background-color: blueviolet;border-radius: 10px;" href="Logout.jsp">Logout</a>
     </div>
 
 </div>
 
-
+</div>
 </body>
 </html>

@@ -1,5 +1,9 @@
 package login.demo.registration;
 
+import login.demo.registration.connection.ConnectionProvider;
+import login.demo.registration.interfaces.ICustomerOperation;
+import login.demo.registration.model.Customer;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,13 +19,12 @@ public class CustomerOperationImplementation implements ICustomerOperation {
         try {
             System.out.println("conn ......");
             Connection con = ConnectionProvider.getCon();
-            //  ps = con.prepareStatement("insert into customer values (?,?,?,)");
             ps = con.prepareStatement("insert into customer(userName,Address,Password,EmailId,RegisteredDate) values (?,?,?,?,CURRENT_TIMESTAMP )");
 
             ps.setString(1, c.getUserName());
             ps.setString(2, c.getAddress());
             ps.setString(3, c.getPassword());
-            ps.setString(4, c.getEmail());
+            ps.setString(4, c.getEmailId());
 
             status = ps.executeUpdate();
             System.out.println(status);
@@ -49,7 +52,7 @@ public class CustomerOperationImplementation implements ICustomerOperation {
                 c.setUserName(resultSet.getString(1));
                 c.setAddress(resultSet.getString(2));
                 c.setPassword(resultSet.getString(3));
-                c.setEmail(resultSet.getString(5));
+                c.setEmailId(resultSet.getString(5));
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -70,13 +73,13 @@ public class CustomerOperationImplementation implements ICustomerOperation {
             ResultSet resultSet = ps.executeQuery();
 
             while (resultSet.next()) {
-                c.setEmail(resultSet.getString(5));
+                c.setEmailId(resultSet.getString(5));
                 System.out.println("..................");
                 System.out.println(resultSet.getString("userName"));
                 System.out.println(resultSet.getString("Address"));
 
                 System.out.println("..................");
-                c.setEmail(resultSet.getString(5));
+                c.setEmailId(resultSet.getString(5));
             }
         } catch (Exception e) {
             System.out.println(e);

@@ -35,9 +35,13 @@
             <input type="submit" name="submit" value="Register">
         </div>
         <div style="font-family: Arial;font-size:12px;font-weight: 700;text-align: center;padding: 30px">
-            <a style="text-decoration: none;color:black" href="login.jsp">Login</a>
+            <a href="login.jsp">Login</a>
         </div>
     </form>
 </div>
 </body>
 </html>
+
+//reg link
+//session obj
+//popup same screen
